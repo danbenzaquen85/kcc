@@ -8,10 +8,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Informacion del equipo
-        shell: powershell
+      - name: Comprobar Runner
+        shell: cmd
         run: |
-          Write-Host "Runner funcionando correctamente"
-          Write-Host "Equipo: $env:COMPUTERNAME"
-          Write-Host "Usuario: $env:USERNAME"
-          Get-Date
+          echo Runner funcionando correctamente
+          echo Equipo: %COMPUTERNAME%
+          echo Usuario: %USERNAME%
+          echo Fecha:
+          echo %DATE% %TIME%
