@@ -1,0 +1,17 @@
+name: Probar Runner CMD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prueba:
+    runs-on: self-hosted
+
+    steps:
+      - name: Comprobar Runner con CMD
+        shell: cmd
+        run: |
+          echo Runner funcionando correctamente
+          echo Equipo: %COMPUTERNAME%
+          echo Usuario: %USERNAME%
+          echo Fecha: %DATE% %TIME%
