@@ -1,0 +1,28 @@
+name: Comprobar acceso a SAP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  comprobar:
+    runs-on: self-hosted
+
+    steps:
+      - name: Comprobar equipo y herramientas
+        shell: cmd
+        run: |
+          echo === EQUIPO RUNNER ===
+          hostname
+          whoami
+
+          echo === CONEXION CON SERVIDOR SAP ===
+          ping -n 2 KENCEN-RDP1
+
+          echo === HERRAMIENTAS SQL DISPONIBLES ===
+          where sqlcmd
+          where bcp
+
+      - name: Comprobar puerto SQL Server
+        shell: cmd
+        run: |
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Test-NetConnection -ComputerName KENCEN-RDP1 -Port 1433 | Select-Object ComputerName,RemotePort,TcpTestSucceeded"
