@@ -1,0 +1,17 @@
+name: Probar conexion Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prueba:
+    runs-on: self-hosted
+
+    steps:
+      - name: Informacion del equipo
+        shell: powershell
+        run: |
+          Write-Host "Runner funcionando correctamente"
+          Write-Host "Equipo: $env:COMPUTERNAME"
+          Write-Host "Usuario: $env:USERNAME"
+          Get-Date
